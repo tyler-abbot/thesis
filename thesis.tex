@@ -1,0 +1,179 @@
+
+\documentclass[12pt, a4, twoside]{report}
+
+% DEFAULT PACKAGE SETUP
+\usepackage{setspace,graphicx,epstopdf,amsmath,amsfonts,amssymb,amsthm}
+\usepackage{marginnote,datetime,enumitem,rotating, fancyvrb}
+\usepackage{hyperref, float}
+\usepackage{verbatim}
+\usepackage{booktabs}
+%\usepackage{dcolumn}
+%\usepackage{bm}
+\usepackage{subfigure}
+\usepackage[longnamesfirst]{natbib}
+\usdate
+
+%For referencing theorems and lemmas
+\usepackage{cleveref}% http://ctan.org/pkg/cleveref
+\usepackage{arydshln}
+%\usepackage{minted}
+%\usepackage{bbm}
+%\usepackage[ruled,vlined,boxed,commentsnumbered]{algorithm2e}
+
+% Deal with multiple bibliographies
+\usepackage{emptypage}
+\usepackage{multibib}
+\newcites{Somm}{References}
+\newcites{Intro}{References}
+\newcites{One}{References}
+\newcites{Two}{References}
+\newcites{Three}{References}
+
+% Number paragraphs and subparagraphs and include them in TOC
+\setcounter{tocdepth}{2}
+
+% JFE-specific includes:
+
+\usepackage{indentfirst} % Indent first sentence of a new section.
+\usepackage{jfe}          % JFE-specific formatting of sections, etc.
+
+% Set margins
+\usepackage[margin=1in]{geometry}
+\usepackage{accents}
+
+% Theorem titles
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{claim}{Claim}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{lemma}{Lemma} %[section]
+\newtheorem{corollary}{Corollary}
+\newtheorem{condition}{Condition}
+\newtheorem{definition}{Definition}
+
+% For cref
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{claim}{Claim}{Claims}
+\crefname{proposition}{Proposition}{Propostions}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{equation}{Eq.}{Eqs.}
+\crefname{algocf}{Algorithm}{Algorithms}
+\crefname{appendix}{Appendix}{Appendices}
+\crefname{appsec}{Appendix}{Appendices}
+
+
+% needed?
+%\newcommand\subfigsize{0.5\textwidth}
+%\newcommand{\omegvec}{\bm{\omega}}
+
+% needed?
+%\newcommand\munderbar[1]{%
+%	\underaccent{\bar}{#1}}
+
+%\newcolumntype{d}[1]{D..{#1}} % for alignment of numbers on decimal marker
+
+% For dealing with multiple appendices
+\makeatletter
+\newcounter{savesection}
+\newcounter{apdxsection}
+\renewcommand\appendix{\par
+	\setcounter{savesection}{\value{section}}%
+	\setcounter{section}{\value{apdxsection}}%
+	\setcounter{subsection}{0}%
+	\gdef\thesection{\@Alph\c@section}}
+\newcommand\unappendix{\par
+	%\setcounter{apdxsection}{\value{section}}%
+	\setcounter{apdxsection}{0}%
+	\setcounter{section}{\value{savesection}}%
+	\setcounter{subsection}{0}%
+	\gdef\thesection{\@arabic\c@section}}
+\makeatother
+
+% For dealing with pagecount around abstracts
+\makeatletter
+\newcounter{stored_pagecount}
+\makeatother
+
+% Reset counters at starts of chapters
+\makeatletter
+\@addtoreset{theorem}{chapter}
+\@addtoreset{proposition}{chapter}
+\makeatother
+
+% Redefine chapter heading to reduce whitespace
+\makeatletter
+\renewcommand*\@makechapterhead[1]{%
+	%\vspace*{50\p@}%
+	{\parindent \z@ \raggedright \normalfont
+		\ifnum \c@secnumdepth >\m@ne
+		\huge\bfseries \@chapapp\space \thechapter
+		\par\nobreak
+		\vskip 20\p@
+		\fi
+		\interlinepenalty\@M
+		\Huge \bfseries #1\par\nobreak
+		%\vskip 40\p@
+	}}
+\makeatother
+
+% needed?
+% \setlist{noitemsep}  % Reduce space between list items (itemize, enumerate, etc.)
+
+% needed?
+%\makeatletter
+%\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+%	\hskip -\arraycolsep
+%	\let\@ifnextchar\new@ifnextchar
+%	\array{#1}}
+%\makeatother
+
+\begin{document}
+
+	\setlist{noitemsep}  % Reduce space between list items (itemize, enumerate, etc.)
+
+	\singlespacing
+
+    \input{titlepage.tex}
+
+    \cleardoublepage
+	
+    \input{titrepage.tex}
+
+    \cleardoublepage
+
+	\include{acknowledgements}
+
+    % cleardoublepage ensures section begins on odd page
+    \cleardoublepage
+	\tableofcontents
+
+    \cleardoublepage
+	\listoffigures
+
+    \cleardoublepage
+	\listoftables
+
+    % Ensure that appendix numbering properly initialized
+	\unappendix
+
+    \cleardoublepage
+  \input{sommaire.tex}
+
+    \cleardoublepage
+	\input{introduction.tex}
+
+    \cleardoublepage
+	\input{chapter1.tex}
+
+    \cleardoublepage
+	\input{chapter2.tex}
+
+    \cleardoublepage
+	\input{chapter3.tex}
+	
+	  \cleardoublepage
+  \input{conclusion.tex}
+
+\end{document}

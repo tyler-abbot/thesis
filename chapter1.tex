@@ -1,0 +1,112 @@
+
+% Fix alignment and ensure title, abstract, and text all on same page
+\begin{flushleft}
+\begin{minipage}{\textwidth}
+
+\chapter{A Great Chapter}\label{chapter1}
+
+% Store page number since abstract kills it
+\setcounter{stored_pagecount}{\value{page}}
+\begin{abstract}
+	\thispagestyle{plain}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, venenatis sed iaculis in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac, sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, sit amet ullamcorper ligula nulla vestibulum tellus.
+\end{abstract}
+
+% Reset since abstract kills it
+\setcounter{page}{\value{stored_pagecount}}
+
+\end{minipage}
+\end{flushleft}
+
+\onehalfspacing
+\setcounter{footnote}{0}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+%\setcounter{page}{1}
+
+\section*{Introduction}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, \citeOne{smith2019title} venenatis sed iaculis in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac, sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut \citeOne{smith2019title}
+at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, \citeOne{smith2019title} sit amet ullamcorper ligula nulla vestibulum tellus.
+
+Lorem \Cref{sec:One} ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, venenatis sed iaculis in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac, sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, sit amet ullamcorper ligula nulla vestibulum tellus.
+
+
+\section{A Section} \label{sec:One}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, venenatis sed iaculis in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac, sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, sit amet ullamcorper ligula nulla vestibulum tellus.
+
+\begin{proposition}\label{prop:important}
+ 	Bla bla bla
+	\begin{align*}
+		y=a + bx
+	\end{align*}
+ 	which admits a unique solution in $x$.
+\end{proposition}
+\noindent Lorem ipsum \cref{prop:important} dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum.
+
+
+\subsection{A Subsection}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, venenatis sed iaculis in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac, sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, sit amet ullamcorper ligula nulla vestibulum tellus.
+
+\begin{figure}[!h]
+	\includegraphics[width=0.8\textwidth]{plots/curve_fitting}
+	\centering
+	\caption{Important graphs for my research.}
+	\centering
+	\label{fig:curve_fitting}
+\end{figure}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, venenatis sed iaculis \cref{curve_fitting} in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac, sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, sit amet ullamcorper ligula nulla vestibulum tellus.
+
+\begin{figure}[!h]
+	\hspace{-5pt}
+	\subfigure[Scheduling]{
+		\includegraphics[width=0.5\textwidth]{plots/advisor1}
+		%\centering
+		%\caption{}
+		%\centering
+		\label{fig:advisor1}
+	}\hspace{-10pt}
+	\subfigure[Imposter Syndrome]{
+		\includegraphics[width=0.5\textwidth]{plots/advisor2}
+		\centering
+		%\caption{}
+		%\centering
+		\label{fig:advisor2}
+	}
+	\caption{\cref{fig:advisor1} is funny, but so is \cref{fig:advisor2}.}
+	\label{fig:advisors}
+\end{figure}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, venenatis sed iaculis \cref{fig:advisor1,fig:advisor2} in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac,\cref{fig:advisors} sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, sit amet ullamcorper ligula nulla vestibulum tellus.
+
+\section{Conclusion} \label{sec:conc}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, venenatis sed iaculis in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac, sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, sit amet ullamcorper ligula nulla vestibulum tellus.
+
+
+
+\bibliographystyleOne{apalike}
+\bibliographyOne{mybib}
+\clearpage
+
+\appendix
+
+% Start naming sections appendix
+\crefalias{section}{appendix}
+
+\section{Proofs}
+
+\begin{proof}[Proof of \cref{prop:important}]
+ 	Bla bla bla
+ 	\begin{align*}
+ 	y=a + bx
+ 	\end{align*}
+ 	which admits a unique solution in $x$.
+\end{proof}
+
+\section{An Important Thing That Didn't Make The Cut}\label[appendix]{sec:appendix_A}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin massa vel venenatis dictum. Aliquam erat volutpat. Phasellus accumsan eu felis at luctus. Integer neque elit, venenatis sed iaculis in, tincidunt nec augue. Aliquam erat volutpat. Nulla sodales tortor non justo tincidunt, non varius risus mollis. Aliquam est purus, cursus at nulla ac, sollicitudin placerat diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut at leo eget metus scelerisque venenatis. Sed quis dui nisi. Morbi sodales, leo ac scelerisque malesuada, libero sem placerat ante, sit amet ullamcorper ligula nulla vestibulum tellus.
+
+
+% Stop naming sections appendix
+\unappendix
+\crefalias{section}{section}
