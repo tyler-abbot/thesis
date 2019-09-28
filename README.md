@@ -16,7 +16,9 @@ as I did.
 
 Over the years I did horrible things to my latex installation, so I found it
 easiest to re-install Texlive from scratch. Steps to do this are [described here](https://www.tug.org/texlive/quickinstall.html).
-It's not the clearest, but it's not that tough when you get there.
+It's not the clearest, but it's not that tough when you get there. If you do this
+you will not need to install any additional packages to compile the thesis... yay!
+If not, good luck.
 
 I personally like working in a virtual environment, so if you do too you can use
 the user mode from tlmgr:
@@ -26,13 +28,6 @@ export TEXMFHOME=~/test-tree
 tlmgr update --all
 ```
 If you don't always want to export the user profile, add it to your `.bashrc`.
-
-Once you have a working Texlive installation (which is up to date), you should
-be able to install packages using `tlmgr PACKAGE_NAME`. If you have some other
-preferred method of installing packages, do that.
-
-Here's the list of packages you'll need:
-* multibib
 
 ## Use
 
